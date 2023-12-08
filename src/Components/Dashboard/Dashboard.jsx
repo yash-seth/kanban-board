@@ -4,7 +4,7 @@ import "./Dashboard.css"
 import Ticket from '../Ticket/Ticket'
 import List from '../List/List'
 
-function Dashboard({statuses, priorities, data, grouping}) {
+function Dashboard({statuses, priorities, priorityScores, data, grouping}) {
     // let demoTicket = {
     //     "id": "CAM-1",
     //     "title": "Update User Profile Page UI",
@@ -16,6 +16,35 @@ function Dashboard({statuses, priorities, data, grouping}) {
     //     "priority": 4
     // }
     // let ticketList = [demoTicket, demoTicket, demoTicket]
+
+    let users = [
+        {
+            "id": "usr-1",
+            "name": "Anoop sharma",
+            "available": false
+        },
+        {
+            "id": "usr-2",
+            "name": "Yogesh",
+            "available": true
+        },
+        {
+            "id": "usr-3",
+            "name": "Shankar Kumar",
+            "available": true
+        },
+        {
+            "id": "usr-4",
+            "name": "Ramesh",
+            "available": true
+        },
+        {
+            "id": "usr-5",
+            "name": "Suresh",
+            "available": true
+        }
+    ]
+
 
     let ticketList = [
         {
@@ -122,7 +151,7 @@ function Dashboard({statuses, priorities, data, grouping}) {
 
     const [ticketMap, setTicketMap] = useState([])
 
-    useEffect(() => {
+    let statusTicketMap = () => {
         let obj = []
         statuses.forEach(status => {
             let tmp = [];
@@ -134,7 +163,41 @@ function Dashboard({statuses, priorities, data, grouping}) {
         });
         console.log(obj)
         setTicketMap(obj)
-    }, [])
+    }
+
+    let userTicketMap = () => {
+        let obj = []
+        users.forEach(user => {
+            let tmp = [];
+            ticketList.forEach(ticket => {
+                // console.log(ticket.status, " ", status)
+                if(user.id === ticket.userId) tmp.push(ticket)
+            })
+            obj.push(tmp)
+        });
+        console.log(obj)
+        setTicketMap(obj)
+    }
+
+    let priorityTicketMap = () => {
+        let obj = []
+        priorityScores.forEach(priority => {
+            let tmp = [];
+            ticketList.forEach(ticket => {
+                // console.log(ticket.status, " ", status)
+                if(priority === ticket.priority) tmp.push(ticket)
+            })
+            obj.push(tmp)
+        });
+        console.log(obj)
+        setTicketMap(obj)
+    }
+
+    useEffect(() => {
+        if(grouping === 'Status') statusTicketMap()
+        else if(grouping === 'User') userTicketMap()
+        else if(grouping === 'Priority') priorityTicketMap()
+    }, [grouping])
     
   return (
     <div className='dashboard-main'>
@@ -147,6 +210,26 @@ function Dashboard({statuses, priorities, data, grouping}) {
                 </div>
                 )
             })
+        :
+        grouping === 'User' ? 
+        ticketMap.map((ticketList, key) => {
+            return (
+            <div className='dashboard-list'>
+                <p className='dashboard-list-header'>{users[key].name}</p>
+                <List ticketList={ticketList} />
+            </div>
+            )
+        })
+        :
+        grouping === 'Priority' ? 
+        ticketMap.map((ticketList, key) => {
+            return (
+            <div className='dashboard-list'>
+                <p className='dashboard-list-header'>{priorities[key]}</p>
+                <List ticketList={ticketList} />
+            </div>
+            )
+        })
         :
         (<span></span>)
         }
