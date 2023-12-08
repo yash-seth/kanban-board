@@ -1,0 +1,36 @@
+.ticket-main {
+    background-color: white;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: 1px solid black;
+    width: fit-content;
+    padding: 20px;
+    border-radius: 10px;
+    /* box-shadow: 20%; */
+    margin: 10px;
+}
+
+.ticket-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.ticket-tags {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticket-tag {
+    border: 1px solid black;
+    width: fit-content;
+    padding: 2px;
+    margin: 2px;
+    border-radius: 10px;
+}
