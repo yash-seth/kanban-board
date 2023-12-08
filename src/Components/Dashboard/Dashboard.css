@@ -1,4 +1,23 @@
 .dashboard-main {
-    background-color: rgb(225, 229, 244);
+    background-color: rgb(238, 238, 246);
     height: 100%;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dashboard-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-width: 250px;
+    margin: 0 10px;
+}
+
+.dashboard-list-header {
+    margin-left: 10px;
 }

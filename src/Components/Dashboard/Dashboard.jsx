@@ -1,25 +1,155 @@
 import React from 'react'
+import {useState, useEffect} from 'react'
 import "./Dashboard.css"
 import Ticket from '../Ticket/Ticket'
 import List from '../List/List'
 
-function Dashboard() {
-    let demoTicket = {
-        "id": "CAM-1",
-        "title": "Update User Profile Page UI",
-        "tag": [
-            "Feature request"
-        ],
-        "userId": "usr-1",
-        "status": "Todo",
-        "priority": 4
-    }
-    let ticketList = [demoTicket, demoTicket, demoTicket]
+function Dashboard({statuses, priorities, data, grouping}) {
+    // let demoTicket = {
+    //     "id": "CAM-1",
+    //     "title": "Update User Profile Page UI",
+    //     "tag": [
+    //         "Feature request"
+    //     ],
+    //     "userId": "usr-1",
+    //     "status": "Todo",
+    //     "priority": 4
+    // }
+    // let ticketList = [demoTicket, demoTicket, demoTicket]
+
+    let ticketList = [
+        {
+            "id": "CAM-1",
+            "title": "Update User Profile Page UI",
+            "tag": [
+                "Feature request"
+            ],
+            "userId": "usr-1",
+            "status": "Todo",
+            "priority": 4
+        },
+        {
+            "id": "CAM-2",
+            "title": "Add Multi-Language Support - Enable multi-language support within the application.",
+            "tag": [
+                "Feature Request"
+            ],
+            "userId": "usr-2",
+            "status": "In progress",
+            "priority": 3
+        },
+        {
+            "id": "CAM-3",
+            "title": "Optimize Database Queries for Performance",
+            "tag": [
+                "Feature Request"
+            ],
+            "userId": "usr-2",
+            "status": "In progress",
+            "priority": 1
+        },
+        {
+            "id": "CAM-4",
+            "title": "Implement Email Notification System",
+            "tag": [
+                "Feature Request"
+            ],
+            "userId": "usr-1",
+            "status": "In progress",
+            "priority": 3
+        },
+        {
+            "id": "CAM-5",
+            "title": "Enhance Search Functionality",
+            "tag": [
+                "Feature Request"
+            ],
+            "userId": "usr-5",
+            "status": "In progress",
+            "priority": 0
+        },
+        {
+            "id": "CAM-6",
+            "title": "Third-Party Payment Gateway",
+            "tag": [
+                "Feature Request"
+            ],
+            "userId": "usr-2",
+            "status": "Todo",
+            "priority": 1
+        },
+        {
+            "id": "CAM-7",
+            "title": "Create Onboarding Tutorial for New Users",
+            "tag": [
+                "Feature Request"
+            ],
+            "userId": "usr-1",
+            "status": "Backlog",
+            "priority": 2
+        },
+        {
+            "id": "CAM-8",
+            "title": "Implement Role-Based Access Control (RBAC)",
+            "tag": [
+                "Feature Request"
+            ],
+            "userId": "usr-3",
+            "status": "In progress",
+            "priority": 3
+        },
+        {
+            "id": "CAM-9",
+            "title": "Upgrade Server Infrastructure",
+            "tag": [
+                "Feature Request"
+            ],
+            "userId": "usr-5",
+            "status": "Todo",
+            "priority": 2
+        },
+        {
+            "id": "CAM-10",
+            "title": "Conduct Security Vulnerability Assessment",
+            "tag": [
+                "Feature Request"
+            ],
+            "userId": "usr-4",
+            "status": "Backlog",
+            "priority": 1
+        }
+    ]
+
+    const [ticketMap, setTicketMap] = useState([])
+
+    useEffect(() => {
+        let obj = []
+        statuses.forEach(status => {
+            let tmp = [];
+            ticketList.forEach(ticket => {
+                // console.log(ticket.status, " ", status)
+                if(status === ticket.status) tmp.push(ticket)
+            })
+            obj.push(tmp)
+        });
+        console.log(obj)
+        setTicketMap(obj)
+    }, [])
+    
   return (
     <div className='dashboard-main'>
-        Dashboard
-        {/* <Ticket ticket = {demoTicket}/> */}
-        <List ticketList={ticketList} />
+        {grouping === "Status" ? 
+            ticketMap.map((ticketList, key) => {
+                return (
+                <div className='dashboard-list'>
+                    <p className='dashboard-list-header'>{statuses[key]}</p>
+                    <List ticketList={ticketList} />
+                </div>
+                )
+            })
+        :
+        (<span></span>)
+        }
     </div>
   )
 }

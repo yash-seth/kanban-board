@@ -11,6 +11,8 @@
     border-radius: 10px;
     /* box-shadow: 20%; */
     margin: 10px;
+    width: 250px;
+    height: 100px;
 }
 
 .ticket-header {
@@ -20,11 +22,18 @@
     align-items: center;
 }
 
+.ticket-header, .ticket-content {
+    font-size: 14px;
+    margin: 3px;
+}
+
 .ticket-tags {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    font-size: 10px;
+    margin: 3px 0px;
 }
 
 .ticket-tag {
