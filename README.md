@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# Kanban Board - QuickSell Frontend Assignment (VIT)
+## Description
+A Kanban Board built using React.js for the assessment conducted by QuickSell. It has the following features:
+- Fetches data from [API](https://api.quicksell.co/v1/internal/frontend-assignment )
+- Dynamic grouping of data based on the following parameters
+  1. **By Status**: Group tickets based on their current status.
+  2. **By User**: Arrange tickets according to the assigned user.
+  3. **By Priority**: Group tickets based on their priority level.
+- Dynamic ordering of tickets based on the following parameters
+  1. **Priority**: Arrange tickets in descending order of priority.
+  2. **Title**: Sort tickets in ascending order based on their title.
+- Responsive design for smaller screen sizes
+- Vanilla CSS styling
+- Icons from [Material UI icon](https://mui.com/material-ui/material-icons/)
+- Components structured in a reusable and maintainable manner
+- Persistance of State
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Technology used
+- React.js - Frontend
+- Postman - testing API
+- Vercel - Hosting Service
 
-## Available Scripts
+## Setup Instructions
+### Frontend
+- Step 1: Clone repo using `https://github.com/yash-seth/quicksell-frontend-task.git`
+- Step 2: Navigate to the folder and run `npm i` to install all required dependencies
+- Step 3: Run the frontend using `npm run start`
 
-In the project directory, you can run:
+## Demo
+The platform has been hosted for demo purposes - https://quicksell-frontend-task-yash-seth.vercel.app/
 
-### `npm start`
+## Samples
+### Grouped on Status, Ordered on Title
+![image](https://github.com/yash-seth/quicksell-frontend-task/assets/71393551/8a002e12-799f-4423-bbba-c608883b0e7d)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Grouped on User, Ordered on Priority
+![image](https://github.com/yash-seth/quicksell-frontend-task/assets/71393551/e87e9721-2750-4767-a4e3-83d28d971d36)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Grouped on Priority, Ordered on Priority
+![image](https://github.com/yash-seth/quicksell-frontend-task/assets/71393551/e11095aa-360c-4f1e-8b31-7e0c6be5de05)
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Phone Screen View (Responsive Design)
+![image](https://github.com/yash-seth/quicksell-frontend-task/assets/71393551/660337c5-71d7-4064-ad47-329982f8cf2a)
