@@ -112,7 +112,7 @@ function Dashboard({statuses, priorities, priorityScores, grouping, ordering}) {
     }
 
     function cmpPriority(a, b) {
-        return a.priority < b.priority;
+        return b.priority - a.priority;
     }
 
     useEffect(() => {
