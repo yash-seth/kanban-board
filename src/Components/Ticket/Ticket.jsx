@@ -3,6 +3,7 @@ import "./Ticket.css"
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import EmailIcon from '@mui/icons-material/Email';
 
 function Ticket({ticket}) {
   return (
@@ -19,6 +20,7 @@ function Ticket({ticket}) {
         </div>
         <div className='ticket-metadata'>
             <div className='ticket-tags'>
+            <div className="ticket-tag"><EmailIcon sx={{fontSize: "12px", color: '#535353'}}/></div>
             {ticket.tag.map((tag, key) => {
                 return (
                         <div key={key} className='ticket-tag'>
