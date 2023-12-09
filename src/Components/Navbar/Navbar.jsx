@@ -5,13 +5,18 @@ import TuneIcon from '@mui/icons-material/Tune';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 function Navbar({setGrouping, setOrdering}) {
+  // available grouping and ordering options
   let groupingOptions = ['Status', 'User', 'Priority']
   let orderingOptions = ['Title', 'Priority']
+
+  // default view for the options under display is hidden
   const [optionsView, toggleOptionsView] = useState(false)
 
+  // toggle the view of options under display
   let toggleOptions = () => {
     toggleOptionsView(!optionsView)
   }
+
   return (
     <div className='navbar-main'>
         <div className='navbar-options-dropdown'>

@@ -28,7 +28,7 @@ function Ticket({ticket}) {
                             </div>
                         </div>
                     )
-            })}
+                })}
             </div>
         </div>
     </div>
@@ -37,6 +37,7 @@ function Ticket({ticket}) {
 
 export default Ticket
 
+// Dummy ticket
 /* "id": "CAM-1",
 "title": "Update User Profile Page UI",
 "tag": [

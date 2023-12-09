@@ -53,7 +53,7 @@
     color:rgba(0, 0, 0, .9);
 }
 
-@media screen and (max-width: 920px){
+@media screen and (max-width: 920px) {
     .navbar-main {
         height: 0px;
         width: 100%;
