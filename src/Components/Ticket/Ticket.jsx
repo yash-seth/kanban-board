@@ -13,8 +13,8 @@ function Ticket({ticket}) {
         </div>
         <div className='ticket-metadata'>
             <div className='ticket-tags'>
-            {ticket.tag.map((tag) => {
-                return (<div className='ticket-tag'>{tag}</div>)
+            {ticket.tag.map((tag, key) => {
+                return (<div key={key} className='ticket-tag'>{tag}</div>)
             })}
             </div>
         </div>
