@@ -170,8 +170,8 @@ function Dashboard({statuses, priorities, priorityScores, grouping, ordering}) {
                             <div className='dashboard-list-items-count'>{ticketList.length}</div>
                         </div>
                         {ticketList.length !== 0 && <div>
-                            <AddIcon />
-                            <MoreHorizIcon />
+                            <AddIcon sx={{ color: "#808080"}}/>
+                            <MoreHorizIcon sx={{ color: "#808080"}}/>
                         </div>}
                     </div>
                     <List key={key} ticketList={ticketList} />
@@ -190,8 +190,8 @@ function Dashboard({statuses, priorities, priorityScores, grouping, ordering}) {
                             <div className='dashboard-list-items-count'>{ticketList.length}</div>
                         </div>
                         {ticketList.length !== 0 && <div>
-                            <AddIcon />
-                            <MoreHorizIcon />
+                            <AddIcon sx={{ color: "#808080"}}/>
+                            <MoreHorizIcon sx={{ color: "#808080"}}/>
                         </div>}
                     </div>
                 <List key={key} ticketList={ticketList} />
@@ -210,8 +210,8 @@ function Dashboard({statuses, priorities, priorityScores, grouping, ordering}) {
                             <div className='dashboard-list-items-count'>{ticketList.length}</div>
                         </div>
                         {ticketList.length !== 0 && <div>
-                            <AddIcon />
-                            <MoreHorizIcon />
+                            <AddIcon sx={{ color: "#808080"}}/>
+                            <MoreHorizIcon sx={{ color: "#808080"}}/>
                         </div>}
                     </div>
                 <List key={key} ticketList={ticketList} />

@@ -26,7 +26,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 300px
+    width: 270px;
+    margin: 10px
 }
 
 .dashboard-list-header-controls-info {
@@ -39,6 +40,7 @@
 
 .dashboard-list-items-count {
     margin: 0 8px;
+    color: #808080;
 }
 
 .dashboard-list-header {
