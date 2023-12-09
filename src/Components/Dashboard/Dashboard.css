@@ -7,6 +7,8 @@
     justify-content: flex-start;
     align-items: flex-start;
     font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    z-index: -1;
 }
 
 .dashboard-list {

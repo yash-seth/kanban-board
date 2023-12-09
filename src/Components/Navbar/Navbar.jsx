@@ -1,31 +1,47 @@
 import React from 'react'
+import { useState } from 'react'
 import "./Navbar.css"
 
 function Navbar({setGrouping, setOrdering}) {
   let groupingOptions = ['Status', 'User', 'Priority']
   let orderingOptions = ['Title', 'Priority']
+  const [optionsView, toggleOptionsView] = useState(false)
 
+  let toggleOptions = () => {
+    toggleOptionsView(!optionsView)
+  }
   return (
     <div className='navbar-main'>
-        <label htmlFor="grouping">Grouping</label>
+        <div className='navbar-options-dropdown'>
+          <button onClick={() => toggleOptions()}>Display</button>
+          {optionsView 
+          && 
+          <div className='navbar-options'>
+            <div className='navbar-option'>
+              <label htmlFor="grouping">Grouping</label>
 
-        <select name="grouping" id="grouping" onChange={e => {localStorage.setItem("grouping", e.target.value);setGrouping(e.target.value)}}>
-          {localStorage.getItem('grouping') && <option>{localStorage.getItem('grouping')}</option>}
-          {groupingOptions.map((group, key) => {
-            return localStorage.getItem('grouping') !== group && <option key={key} value={group}>{group}</option>
-          })}
-        </select>
-        
-        <label htmlFor="ordering">Ordering</label>
-
-        <select name="ordering" id="ordering" onChange={e => {localStorage.setItem("ordering", e.target.value );setOrdering(e.target.value)}}>
-          {/* <option value="Title">Title</option>
-          <option value="Priority">Priority</option> */}
-          {localStorage.getItem('ordering') && <option>{localStorage.getItem('ordering')}</option>}
-          {orderingOptions.map((order, key) => {
-            return localStorage.getItem('ordering') !== order && <option key={key} value={order}>{order}</option>
-          })}
-        </select>
+              <select name="grouping" id="grouping" onChange={e => {localStorage.setItem("grouping", e.target.value);setGrouping(e.target.value)}}>
+                {localStorage.getItem('grouping') && <option>{localStorage.getItem('grouping')}</option>}
+                {groupingOptions.map((group, key) => {
+                  return localStorage.getItem('grouping') !== group && <option key={key} value={group}>{group}</option>
+                })}
+              </select>
+            </div>
+            <div className='navbar-option'>
+              <div>
+                <label htmlFor="ordering">Ordering</label>
+              </div>
+              <div>
+                <select name="ordering" id="ordering" onChange={e => {localStorage.setItem("ordering", e.target.value );setOrdering(e.target.value)}}>
+                  {localStorage.getItem('ordering') && <option>{localStorage.getItem('ordering')}</option>}
+                  {orderingOptions.map((order, key) => {
+                    return localStorage.getItem('ordering') !== order && <option key={key} value={order}>{order}</option>
+                  })}
+                </select>
+              </div>
+            </div>
+          </div>}
+        </div>
     </div>
   )
 }
