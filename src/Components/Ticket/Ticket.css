@@ -19,8 +19,9 @@
 .ticket-header {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    width: 250px;
 }
 
 .ticket-header, .ticket-content {
@@ -43,4 +44,8 @@
     padding: 2px;
     margin: 2px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }

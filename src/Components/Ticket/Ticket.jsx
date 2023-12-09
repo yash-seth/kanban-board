@@ -1,12 +1,14 @@
 import React from 'react'
 import "./Ticket.css"
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 function Ticket({ticket}) {
   return (
     <div className='ticket-main'>
         <div className='ticket-header'>
             <div className='ticket-id'>{ticket.id}</div>
-            {/* <div className='ticket-owner-pfp'>pfp</div> */}
+            <AccountCircleIcon color="disabled"/>
         </div>
         <div className='ticket-content'>
             <div className='ticket-title'><b>{ticket.title}</b></div>
@@ -14,7 +16,14 @@ function Ticket({ticket}) {
         <div className='ticket-metadata'>
             <div className='ticket-tags'>
             {ticket.tag.map((tag, key) => {
-                return (<div key={key} className='ticket-tag'>{tag}</div>)
+                return (
+                        <div key={key} className='ticket-tag'>
+                            <FiberManualRecordIcon color="disabled" sx={{ fontSize: "12px" }}/>
+                            <div>
+                                {tag}
+                            </div>
+                        </div>
+                    )
             })}
             </div>
         </div>
