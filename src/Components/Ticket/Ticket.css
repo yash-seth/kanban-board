@@ -29,6 +29,17 @@
     margin: 3px;
 }
 
+.ticket-content-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.ticket-title {
+    margin-left: 4px;
+}
+
 .ticket-tags {
     display: flex;
     flex-direction: row;

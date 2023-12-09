@@ -2,6 +2,7 @@ import React from 'react'
 import "./Ticket.css"
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 function Ticket({ticket}) {
   return (
@@ -11,7 +12,10 @@ function Ticket({ticket}) {
             <AccountCircleIcon color="disabled"/>
         </div>
         <div className='ticket-content'>
-            <div className='ticket-title'><b>{ticket.title}</b></div>
+            <div className='ticket-content-title'>
+                <CheckCircleOutlineIcon sx={{ fontSize: "16px" }} />
+                <div className='ticket-title'><b>{ticket.title}</b></div>
+            </div>
         </div>
         <div className='ticket-metadata'>
             <div className='ticket-tags'>
