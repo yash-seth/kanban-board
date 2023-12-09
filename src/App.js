@@ -40,15 +40,23 @@ function App() {
     })
   }, [])
 
-  useEffect(() => {
-    console.log(grouping)
-  }, [grouping])
+  // useEffect(() => {
+  //   console.log(grouping)
+  // }, [grouping])
+
+  // useEffect(() => {
+  //   console.log(ordering)
+  // }, [ordering])
   
+  useEffect(() => {
+    setOrdering("Priority")
+    setGrouping("Status")
+  }, [])
 
   return (
     <div className="App">
       <Navbar setGrouping={setGrouping} setOrdering={setOrdering}/>
-      <Dashboard statuses={statuses} priorities={priorities} priorityScores={priorityScores} data={data} grouping={grouping}/>
+      <Dashboard statuses={statuses} priorities={priorities} priorityScores={priorityScores} data={data} grouping={grouping} ordering={ordering}/>
     </div>  
   );
 }

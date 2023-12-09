@@ -4,7 +4,7 @@ import "./Dashboard.css"
 import Ticket from '../Ticket/Ticket'
 import List from '../List/List'
 
-function Dashboard({statuses, priorities, priorityScores, data, grouping}) {
+function Dashboard({statuses, priorities, priorityScores, data, grouping, ordering}) {
     // let demoTicket = {
     //     "id": "CAM-1",
     //     "title": "Update User Profile Page UI",
@@ -193,11 +193,42 @@ function Dashboard({statuses, priorities, priorityScores, data, grouping}) {
         setTicketMap(obj)
     }
 
+    let orderByPriority = () => {
+        console.log("Before pri sort:", ticketMap)
+        const tmpTicketMap = ticketMap
+        for(let i=0; i<tmpTicketMap.length; i++) {
+            tmpTicketMap[i].sort((a, b) => {
+                return a['Priority'] - b['Priority'];
+            });
+        }
+        setTicketMap(tmpTicketMap)
+        console.log("After:", ticketMap)
+        // console.log(ticketMap)
+    }
+
+    let orderByTitle = () => {
+        console.log("Before title sort:", ticketMap)
+        const tmpTicketMap = ticketMap
+        for(let i=0; i<tmpTicketMap.length; i++) {
+            tmpTicketMap[i].sort((a, b) => {
+                return a['Title'] - b['Title'];
+            });
+        }
+        setTicketMap(tmpTicketMap)
+        console.log("After:", ticketMap)
+        console.log(ticketMap)
+    }
+
     useEffect(() => {
         if(grouping === 'Status') statusTicketMap()
         else if(grouping === 'User') userTicketMap()
         else if(grouping === 'Priority') priorityTicketMap()
     }, [grouping])
+
+    useEffect(() => {
+        if(ordering === 'Priority') orderByPriority()
+        else if(ordering === 'Title') orderByTitle()
+    }, [ordering])
     
   return (
     <div className='dashboard-main'>

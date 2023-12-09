@@ -8,15 +8,16 @@ function Navbar({setGrouping, setOrdering}) {
         <label for="grouping">Grouping</label>
 
         <select name="grouping" id="grouping" onChange={e => setGrouping(e.target.value)}>
-          <option value="User">Users</option>
           <option value="Status">Status</option>
+          <option value="User">Users</option>
           <option value="Priority">Priority</option>
         </select>
-        <label for="Ordering">Ordering</label>
+        
+        <label for="ordering">Ordering</label>
 
-        <select name="ordering" id="ordering">
-          <option value="Users">Title</option>
-          <option value="Status">Priority</option>
+        <select name="ordering" id="ordering" onChange={e => setOrdering(e.target.value)}>
+          <option value="Priority">Priority</option>
+          <option value="Title">Title</option>
         </select>
     </div>
   )
