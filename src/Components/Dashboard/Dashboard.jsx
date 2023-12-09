@@ -2,6 +2,11 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import "./Dashboard.css"
 import List from '../List/List'
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import AddIcon from '@mui/icons-material/Add';
+import InfoIcon from '@mui/icons-material/Info';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 
 function Dashboard({statuses, priorities, priorityScores, grouping, ordering}) {
     const [isLoading, setLoading] = useState(true);
@@ -158,7 +163,17 @@ function Dashboard({statuses, priorities, priorityScores, grouping, ordering}) {
             ticketMap.map((ticketList, key) => {
                 return (
                 <div className='dashboard-list'>
-                    <p className='dashboard-list-header'>{statuses[key]}</p>
+                    <div className='dashboard-list-header-controls'>
+                        <div className='dashboard-list-header-controls-info'>
+                            <InfoIcon color="secondary"/>
+                            <b><p className='dashboard-list-header'>{statuses[key]}</p></b>
+                            <div className='dashboard-list-items-count'>{ticketList.length}</div>
+                        </div>
+                        {ticketList.length !== 0 && <div>
+                            <AddIcon />
+                            <MoreHorizIcon />
+                        </div>}
+                    </div>
                     <List key={key} ticketList={ticketList} />
                 </div>
                 )
@@ -168,7 +183,17 @@ function Dashboard({statuses, priorities, priorityScores, grouping, ordering}) {
         ticketMap.map((ticketList, key) => {
             return (
             <div className='dashboard-list'>
-                <p className='dashboard-list-header'>{data['users'][key].name}</p>
+                <div className='dashboard-list-header-controls'>
+                        <div className='dashboard-list-header-controls-info'>
+                            <AccountCircleIcon sx={{ color: '#9d9df4' }}/>
+                            <b><p className='dashboard-list-header'>{data['users'][key].name}</p></b>
+                            <div className='dashboard-list-items-count'>{ticketList.length}</div>
+                        </div>
+                        {ticketList.length !== 0 && <div>
+                            <AddIcon />
+                            <MoreHorizIcon />
+                        </div>}
+                    </div>
                 <List key={key} ticketList={ticketList} />
             </div>
             )
@@ -178,7 +203,17 @@ function Dashboard({statuses, priorities, priorityScores, grouping, ordering}) {
         ticketMap.map((ticketList, key) => {
             return (
             <div className='dashboard-list'>
-                <p className='dashboard-list-header'>{priorities[key]}</p>
+                <div className='dashboard-list-header-controls'>
+                        <div className='dashboard-list-header-controls-info'>
+                            <PriorityHighIcon />
+                            <b><p className='dashboard-list-header'>{priorities[key]}</p></b>
+                            <div className='dashboard-list-items-count'>{ticketList.length}</div>
+                        </div>
+                        {ticketList.length !== 0 && <div>
+                            <AddIcon />
+                            <MoreHorizIcon />
+                        </div>}
+                    </div>
                 <List key={key} ticketList={ticketList} />
             </div>
             )

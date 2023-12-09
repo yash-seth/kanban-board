@@ -1,7 +1,8 @@
 .dashboard-main {
     background-color: rgb(238, 238, 246);
-    height: 100%;
+    height: fit-content;
     width: fit-content;
+    min-height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -18,6 +19,26 @@
     align-items: flex-start;
     min-width: 250px;
     margin: 0 10px;
+}
+
+.dashboard-list-header-controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px
+}
+
+.dashboard-list-header-controls-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.dashboard-list-items-count {
+    margin: 0 8px;
 }
 
 .dashboard-list-header {
