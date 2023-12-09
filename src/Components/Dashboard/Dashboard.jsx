@@ -132,7 +132,20 @@ function Dashboard({statuses, priorities, priorityScores, grouping, ordering}) {
     }, [grouping, ordering])
 
     useEffect(() => {
-        statusTicketMapTitle()
+        // statusTicketMapTitle()
+        if(grouping === 'Status' && ordering === 'Priority') {
+            statusTicketMapPriority()
+        } else if(grouping === 'Status' && ordering === 'Title') {
+            statusTicketMapTitle()
+        } else if(grouping === 'User' && ordering === 'Priority') {
+            userTicketMapPriority()
+        } else if(grouping === 'User' && ordering === 'Title') {
+            userTicketMapTitle()
+        } else if(grouping === 'Priority' && ordering === 'Priority') {
+            priorityTicketMapPriority()
+        } else if(grouping === 'Priority' && ordering === 'Title') {
+            priorityTicketMapTitle()
+        }
     }, [data])
     
     if (isLoading) {
