@@ -1,6 +1,6 @@
 .navbar-main {
     font-family: 'Montserrat', sans-serif;
-    height: 60px;
+    height: 70px;
 }
 
 .navbar-options-dropdown {
@@ -30,6 +30,25 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 200px;
+    width: 210px;
     margin: 4px 0;
+}
+
+#navbar-dropdown-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    background-color: rgb(253, 253, 253);
+    padding: 2px 5px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, .3);
+    margin-left: 1px;
+}
+
+#navbar-dropdown-text {
+    margin-left: 2px;
+    margin: 0px 0px 0px 4px;
+    color:rgba(0, 0, 0, .8);
 }

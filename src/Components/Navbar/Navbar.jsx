@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import "./Navbar.css"
+import TuneIcon from '@mui/icons-material/Tune';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 function Navbar({setGrouping, setOrdering}) {
   let groupingOptions = ['Status', 'User', 'Priority']
@@ -13,7 +15,11 @@ function Navbar({setGrouping, setOrdering}) {
   return (
     <div className='navbar-main'>
         <div className='navbar-options-dropdown'>
-          <button onClick={() => toggleOptions()}>Display</button>
+          <button id="navbar-dropdown-button" onClick={() => toggleOptions()}>
+              <TuneIcon sx={{fontSize: "18px"}} />
+              <p id="navbar-dropdown-text">Display</p>
+              <ArrowDropDownIcon />
+            </button>
           {optionsView 
           && 
           <div className='navbar-options'>
