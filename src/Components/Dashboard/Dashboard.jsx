@@ -217,7 +217,7 @@ function Dashboard({statuses, priorities, priorityScores, grouping, ordering}) {
                 <div className='dashboard-list'>
                     <div className='dashboard-list-header-controls'>
                             <div className='dashboard-list-header-controls-info'>
-                                <PriorityHighIcon />
+                                <PriorityHighIcon sx={{ fontSize: "20px"}}/>
                                 <b><p className='dashboard-list-header'>{priorities[key]}</p></b>
                                 <div className='dashboard-list-items-count'>{ticketList.length}</div>
                             </div>
