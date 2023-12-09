@@ -60,3 +60,7 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.ticket-id {
+    color:rgba(0, 0, 0, .8);
+}
