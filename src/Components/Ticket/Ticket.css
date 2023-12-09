@@ -7,12 +7,12 @@
     align-items: flex-start;
     border: 1px solid rgba(0, 0, 0, .3);
     width: fit-content;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
     /* box-shadow: 20%; */
     margin: 10px;
     width: 250px;
-    height: 100px;
+    height: 120px;
     box-shadow:  0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -38,6 +38,7 @@
 
 .ticket-title {
     margin-left: 4px;
+    color:rgba(0, 0, 0, .8);
 }
 
 .ticket-tags {
@@ -46,7 +47,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: 10px;
-    margin: 3px 0px;
+    margin: 5px 0px;
 }
 
 .ticket-tag {

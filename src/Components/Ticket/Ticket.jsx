@@ -13,7 +13,7 @@ function Ticket({ticket}) {
         </div>
         <div className='ticket-content'>
             <div className='ticket-content-title'>
-                <CheckCircleOutlineIcon sx={{ fontSize: "16px" }} />
+                <CheckCircleOutlineIcon sx={{ fontSize: "16px", color: '#5D3FD3' }} />
                 <div className='ticket-title'><b>{ticket.title}</b></div>
             </div>
         </div>
