@@ -1,235 +1,144 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import "./Dashboard.css"
-import Ticket from '../Ticket/Ticket'
 import List from '../List/List'
 
-function Dashboard({statuses, priorities, priorityScores, data, grouping, ordering}) {
-    // let demoTicket = {
-    //     "id": "CAM-1",
-    //     "title": "Update User Profile Page UI",
-    //     "tag": [
-    //         "Feature request"
-    //     ],
-    //     "userId": "usr-1",
-    //     "status": "Todo",
-    //     "priority": 4
-    // }
-    // let ticketList = [demoTicket, demoTicket, demoTicket]
+function Dashboard({statuses, priorities, priorityScores, grouping, ordering}) {
+    const [isLoading, setLoading] = useState(true);
+    const [data, setData] = useState({"tickets": [],
+        "users": []  
+    }
+    )
 
-    let users = [
-        {
-            "id": "usr-1",
-            "name": "Anoop sharma",
-            "available": false
-        },
-        {
-            "id": "usr-2",
-            "name": "Yogesh",
-            "available": true
-        },
-        {
-            "id": "usr-3",
-            "name": "Shankar Kumar",
-            "available": true
-        },
-        {
-            "id": "usr-4",
-            "name": "Ramesh",
-            "available": true
-        },
-        {
-            "id": "usr-5",
-            "name": "Suresh",
-            "available": true
-        }
-    ]
-
-
-    let ticketList = [
-        {
-            "id": "CAM-1",
-            "title": "Update User Profile Page UI",
-            "tag": [
-                "Feature request"
-            ],
-            "userId": "usr-1",
-            "status": "Todo",
-            "priority": 4
-        },
-        {
-            "id": "CAM-2",
-            "title": "Add Multi-Language Support - Enable multi-language support within the application.",
-            "tag": [
-                "Feature Request"
-            ],
-            "userId": "usr-2",
-            "status": "In progress",
-            "priority": 3
-        },
-        {
-            "id": "CAM-3",
-            "title": "Optimize Database Queries for Performance",
-            "tag": [
-                "Feature Request"
-            ],
-            "userId": "usr-2",
-            "status": "In progress",
-            "priority": 1
-        },
-        {
-            "id": "CAM-4",
-            "title": "Implement Email Notification System",
-            "tag": [
-                "Feature Request"
-            ],
-            "userId": "usr-1",
-            "status": "In progress",
-            "priority": 3
-        },
-        {
-            "id": "CAM-5",
-            "title": "Enhance Search Functionality",
-            "tag": [
-                "Feature Request"
-            ],
-            "userId": "usr-5",
-            "status": "In progress",
-            "priority": 0
-        },
-        {
-            "id": "CAM-6",
-            "title": "Third-Party Payment Gateway",
-            "tag": [
-                "Feature Request"
-            ],
-            "userId": "usr-2",
-            "status": "Todo",
-            "priority": 1
-        },
-        {
-            "id": "CAM-7",
-            "title": "Create Onboarding Tutorial for New Users",
-            "tag": [
-                "Feature Request"
-            ],
-            "userId": "usr-1",
-            "status": "Backlog",
-            "priority": 2
-        },
-        {
-            "id": "CAM-8",
-            "title": "Implement Role-Based Access Control (RBAC)",
-            "tag": [
-                "Feature Request"
-            ],
-            "userId": "usr-3",
-            "status": "In progress",
-            "priority": 3
-        },
-        {
-            "id": "CAM-9",
-            "title": "Upgrade Server Infrastructure",
-            "tag": [
-                "Feature Request"
-            ],
-            "userId": "usr-5",
-            "status": "Todo",
-            "priority": 2
-        },
-        {
-            "id": "CAM-10",
-            "title": "Conduct Security Vulnerability Assessment",
-            "tag": [
-                "Feature Request"
-            ],
-            "userId": "usr-4",
-            "status": "Backlog",
-            "priority": 1
-        }
-    ]
+    useEffect(() => {
+        fetch("https://api.quicksell.co/v1/internal/frontend-assignment")
+        .then(response => {
+          if(response.ok) {
+            return response.json();
+          }
+          throw response
+        })
+        .then(response => {
+          setData(response)
+          setLoading(false)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+      }, [])
 
     const [ticketMap, setTicketMap] = useState([])
 
-    let statusTicketMap = () => {
+    let statusTicketMapPriority = () => {
         let obj = []
         statuses.forEach(status => {
             let tmp = [];
-            ticketList.forEach(ticket => {
-                // console.log(ticket.status, " ", status)
+            data['tickets'].forEach(ticket => {
                 if(status === ticket.status) tmp.push(ticket)
             })
+            tmp.sort(cmpPriority)
             obj.push(tmp)
         });
-        console.log(obj)
         setTicketMap(obj)
     }
 
-    let userTicketMap = () => {
+    let statusTicketMapTitle = () => {
         let obj = []
-        users.forEach(user => {
+        statuses.forEach(status => {
             let tmp = [];
-            ticketList.forEach(ticket => {
-                // console.log(ticket.status, " ", status)
+            data['tickets'].forEach(ticket => {
+                if(status === ticket.status) tmp.push(ticket)
+            })
+            tmp.sort(cmpTitle)
+            obj.push(tmp)
+        });
+        setTicketMap(obj)
+    }
+
+    let userTicketMapTitle = () => {
+        let obj = []
+        data['users'].forEach(user => {
+            let tmp = [];
+            data['tickets'].forEach(ticket => {
                 if(user.id === ticket.userId) tmp.push(ticket)
             })
+            tmp.sort(cmpTitle)
             obj.push(tmp)
         });
-        console.log(obj)
         setTicketMap(obj)
     }
 
-    let priorityTicketMap = () => {
+    let userTicketMapPriority = () => {
+        let obj = []
+        data['users'].forEach(user => {
+            let tmp = [];
+            data['tickets'].forEach(ticket => {
+                if(user.id === ticket.userId) tmp.push(ticket)
+            })
+            tmp.sort(cmpPriority)
+            obj.push(tmp)
+        });
+        setTicketMap(obj)
+    }
+
+    let priorityTicketMapTitle = () => {
         let obj = []
         priorityScores.forEach(priority => {
             let tmp = [];
-            ticketList.forEach(ticket => {
-                // console.log(ticket.status, " ", status)
+            data['tickets'].forEach(ticket => {
                 if(priority === ticket.priority) tmp.push(ticket)
             })
+            tmp.sort(cmpTitle)
             obj.push(tmp)
         });
-        console.log(obj)
         setTicketMap(obj)
     }
 
-    let orderByPriority = () => {
-        console.log("Before pri sort:", ticketMap)
-        const tmpTicketMap = ticketMap
-        for(let i=0; i<tmpTicketMap.length; i++) {
-            tmpTicketMap[i].sort((a, b) => {
-                return a['Priority'] - b['Priority'];
-            });
-        }
-        setTicketMap(tmpTicketMap)
-        console.log("After:", ticketMap)
-        // console.log(ticketMap)
+    let priorityTicketMapPriority = () => {
+        let obj = []
+        priorityScores.forEach(priority => {
+            let tmp = [];
+            data['tickets'].forEach(ticket => {
+                if(priority === ticket.priority) tmp.push(ticket)
+            })
+            tmp.sort(cmpPriority)
+            obj.push(tmp)
+        });
+        setTicketMap(obj)
     }
 
-    let orderByTitle = () => {
-        console.log("Before title sort:", ticketMap)
-        const tmpTicketMap = ticketMap
-        for(let i=0; i<tmpTicketMap.length; i++) {
-            tmpTicketMap[i].sort((a, b) => {
-                return a['Title'] - b['Title'];
-            });
-        }
-        setTicketMap(tmpTicketMap)
-        console.log("After:", ticketMap)
-        console.log(ticketMap)
+    function cmpTitle(a, b) {
+        return a.title.localeCompare(b.title);
+    }
+
+    function cmpPriority(a, b) {
+        return a.priority < b.priority;
     }
 
     useEffect(() => {
-        if(grouping === 'Status') statusTicketMap()
-        else if(grouping === 'User') userTicketMap()
-        else if(grouping === 'Priority') priorityTicketMap()
-    }, [grouping])
+        if(grouping === 'Status' && ordering === 'Priority') {
+            statusTicketMapPriority()
+        } else if(grouping === 'Status' && ordering === 'Title') {
+            statusTicketMapTitle()
+        } else if(grouping === 'User' && ordering === 'Priority') {
+            userTicketMapPriority()
+        } else if(grouping === 'User' && ordering === 'Title') {
+            userTicketMapTitle()
+        } else if(grouping === 'Priority' && ordering === 'Priority') {
+            priorityTicketMapPriority()
+        } else if(grouping === 'Priority' && ordering === 'Title') {
+            priorityTicketMapTitle()
+        }
+    }, [grouping, ordering])
 
     useEffect(() => {
-        if(ordering === 'Priority') orderByPriority()
-        else if(ordering === 'Title') orderByTitle()
-    }, [ordering])
+        statusTicketMapTitle()
+    }, [data])
     
+    if (isLoading) {
+        return <div className="App">Loading...</div>;
+    }
+
   return (
     <div className='dashboard-main'>
         {grouping === "Status" ? 
@@ -237,7 +146,7 @@ function Dashboard({statuses, priorities, priorityScores, data, grouping, orderi
                 return (
                 <div className='dashboard-list'>
                     <p className='dashboard-list-header'>{statuses[key]}</p>
-                    <List ticketList={ticketList} />
+                    <List key={key} ticketList={ticketList} />
                 </div>
                 )
             })
@@ -246,8 +155,8 @@ function Dashboard({statuses, priorities, priorityScores, data, grouping, orderi
         ticketMap.map((ticketList, key) => {
             return (
             <div className='dashboard-list'>
-                <p className='dashboard-list-header'>{users[key].name}</p>
-                <List ticketList={ticketList} />
+                <p className='dashboard-list-header'>{data['users'][key].name}</p>
+                <List key={key} ticketList={ticketList} />
             </div>
             )
         })
@@ -257,7 +166,7 @@ function Dashboard({statuses, priorities, priorityScores, data, grouping, orderi
             return (
             <div className='dashboard-list'>
                 <p className='dashboard-list-header'>{priorities[key]}</p>
-                <List ticketList={ticketList} />
+                <List key={key} ticketList={ticketList} />
             </div>
             )
         })
