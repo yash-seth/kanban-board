@@ -39,6 +39,7 @@
 .ticket-title {
     margin-left: 4px;
     color:rgba(0, 0, 0, .8);
+    font-size: 14px;
 }
 
 .ticket-tags {

@@ -42,7 +42,7 @@
     outline: none;
     background-color: rgb(253, 253, 253);
     padding: 2px 5px;
-    border-radius: 10px;
+    border-radius: 6px;
     border: 1px solid rgba(0, 0, 0, .3);
     margin-left: 1px;
 }
@@ -50,5 +50,29 @@
 #navbar-dropdown-text {
     margin-left: 2px;
     margin: 0px 0px 0px 4px;
-    color:rgba(0, 0, 0, .8);
+    color:rgba(0, 0, 0, .9);
+}
+
+@media screen and (max-width: 920px){
+    .navbar-main {
+        height: 0px;
+        width: 100%;
+    }
+    
+    .navbar-options-dropdown {
+        padding: 10px 15px 10px;
+    }
+    
+    .navbar-options {
+        padding: 5px 15px;
+        margin: 4px 0px;
+        font-size: 12px;
+        width: 90%;
+    }
+    
+    .navbar-option {
+        width: 100%;
+        margin: 4px 0;
+        justify-content: space-around;
+    }
 }
