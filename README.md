@@ -1,6 +1,6 @@
-# Kanban Board - QuickSell Frontend Assignment (VIT)
+# Kanban Board
 ## Description
-A Kanban Board built using React.js for the assessment conducted by QuickSell. It has the following features:
+A Kanban Board built using React.js. It has the following features:
 - Fetches data from [API](https://api.quicksell.co/v1/internal/frontend-assignment )
 - Dynamic grouping of data based on the following parameters
   1. **By Status**: Group tickets based on their current status.
